@@ -1,6 +1,6 @@
 package Array;
 
-// LeetCode: 
+// LeetCode: https://leetcode.com/problems/remove-duplicates-from-sorted-array/submissions/2158228192/?envType=problem-list-v2&envId=array
 // Problem: Remove Duplicates from Sorted Array
 // Approach: Brute Force - When a duplicate is found, shift all elements
 //            after it one position to the left and decrease the size.
@@ -49,5 +49,30 @@ public class removeduplicates {
         for (int i = 0; i < k; i++) {
             System.out.print(nums[i] + " ");
         }
+    }
+}
+
+// Approach2: Two Pointer - i points to the last unique element
+//            and j scans the array. When a new unique element is found,
+//            move i forward and copy nums[j] to nums[i].
+
+// Time Complexity: O(n)
+// Space Complexity: O(1)
+
+class Solution {
+
+    public int removeDuplicates(int[] nums) {
+
+        int i = 0;
+
+        for (int j = 1; j < nums.length; j++) {
+
+            if (nums[i] != nums[j]) {
+                i++;
+                nums[i] = nums[j];
+            }
+        }
+
+        return i + 1;
     }
 }
